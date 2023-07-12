@@ -4,19 +4,20 @@ import axios from "axios";
 const ProductForm = (props) => {
     const [title, setTitle] = useState();
     const [price, setPrice] = useState();
-    const [description, setDesciption] = useState();
+    const [description, setDescription] = useState();
 
     const submitHandler = (e) => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/products/add', 
             {title, price, description })
             .then((res) => {
-                console.log(res);
                 console.log(res.data);
+                setTitle("");
+                setPrice("");
+                setDescription("");
             })
             .catch((err) => {console.log(err)})
     }
-
     return (
         <div>
             <form onSubmit={submitHandler}>
@@ -33,7 +34,7 @@ const ProductForm = (props) => {
                 </div>
                 <div>
                     <label htmlFor="desc">Description:</label>
-                    <input type="text" id="desc" name="desc" onChange={(e) => setDesciption(e.target.value)} />
+                    <input type="text" id="desc" name="desc" onChange={(e) => setDescription(e.target.value)} />
                 </div>
                 <div>
                     <input type="submit" value="Add" />

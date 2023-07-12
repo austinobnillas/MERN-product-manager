@@ -10,5 +10,10 @@ module.exports = {
         Product.create(req.body)
             .then(newProduct => res.json(newProduct))
             .catch(err => response.json(err));
+    },
+    getOneProduct: (req, res) => {
+        Product.findById({ _id: req.params.id })
+            .then(oneProduct => res.json(oneProduct))
+            .catch(err => response.json(err));
     }
 }
