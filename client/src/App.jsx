@@ -2,6 +2,7 @@ import './App.css';
 import ProductForm from './components/Form'
 import DisplayAll from './components/DisplayAll';
 import DisplayOne from './components/DisplayOne'
+import UpdateForm from './components/UpdateProduct';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {useState} from 'react';
 
@@ -12,10 +13,11 @@ function App() {
       <div className="App">
         <Routes>
           <Route path='/products' element={<>
-            <ProductForm />
+            <ProductForm allProducts={allProducts} setAllProducts={setAllProducts}/>
             <DisplayAll allProducts={allProducts} setAllProducts={setAllProducts}/>
             </>}/>
           <Route path='/products/:id' element={<DisplayOne/>}/>
+          <Route path='/products/edit/:id' element={<UpdateForm/>}/>
         </Routes>
         
       </div>

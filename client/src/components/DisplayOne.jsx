@@ -6,8 +6,7 @@ const OneProduct = (props) => {
     const {id} = useParams();
     const [oneProduct, setOneProduct] = useState({});
     useEffect(() => {
-        axios
-            .get(`http://localhost:8000/api/products/${id}`)
+        axios.get(`http://localhost:8000/api/products/${id}`)
             .then((res) => {
                 console.log(res.data);
                 setOneProduct(res.data);
